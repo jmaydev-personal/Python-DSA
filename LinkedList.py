@@ -49,9 +49,33 @@ class LinkedList:
         # replace head with new node
         self.head = first_node
 
-    """Insert to a specific index"""
+    # Insert to a specific index - O(n) - linear time
     def insert(self, value, index):
-        pass
+        # if adding at start of list, prepend
+        if index == 0:
+            self.prepend(value)
+        else:
+            # if List is empty, throw error
+            if self.head == None:
+                raise ValueError("Index out of bounds")
+            else:
+                # otherwise make last the head node (to point to inserted node later)
+                last = self.head
+
+                for i in range(index-1):
+                    # if index doesn't exist, throw error
+                    if last.next is None:
+                        raise ValueError("Index out of bounds")
+                    # otherwise make last point to the next node
+                    last = last.next
+                
+                # make node to insert
+                new_node = Node(value)
+                # point to node at index of insertion
+                new_node.next = last.next
+                # previous node now points to new node
+                last.next = new_node
+
 
     """Delete value from end of List"""
     def delete(self, value):
