@@ -40,9 +40,14 @@ class LinkedList:
                 last = last.next
             last.next = Node(value)
 
-    """Insert value at beginning of List"""
+    # Insert value at beginning of List - O(1) constant time
     def prepend(self, value):
-        pass
+        # initialise the node with the value to prepend
+        first_node = Node(value)
+        # point to the current head 
+        first_node.next = self.head
+        # replace head with new node
+        self.head = first_node
 
     """Insert to a specific index"""
     def insert(self, value, index):
