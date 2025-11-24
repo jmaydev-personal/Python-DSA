@@ -28,9 +28,17 @@ class LinkedList:
     def __len__(self):
         pass
 
-    """Add value to end of list"""
+    # Append - Add value to end of list - O(n) linear time
     def append(self, value):
-        pass
+        # if no head node, create it
+        if self.head == None:
+            self.head = Node(value)
+        else:
+            # traverse the list until you get to the last node
+            last = self.head
+            while last.next:
+                last = last.next
+            last.next = Node(value)
 
     """Insert value at beginning of List"""
     def prepend(self, value):
