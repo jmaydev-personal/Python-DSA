@@ -99,9 +99,21 @@ class LinkedList:
                 last.next = new_node
 
 
-    # Delete value from end of List
+    # Delete value from end of List - O(n) linear time
     def delete(self, value):
-        pass
+        # find the value to delete, change the pointer from that node and to the next one
+        last = self.head
+
+        if last is not None:
+            if last.value == value:
+                # if the first node is the value to delete, change the head to the next node
+                self.head = last.next
+            else:
+                while last.next:
+                    if last.next.value == value:
+                        # change pointer to the same node that the deleted node was pointing to
+                        last.next = last.next.next
+                        break
 
     # Delete value from specific index in List
     def pop(self, index):
