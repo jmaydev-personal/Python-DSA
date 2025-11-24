@@ -115,9 +115,23 @@ class LinkedList:
                         last.next = last.next.next
                         break
 
-    # Delete value from specific index in List
+    # Delete value from specific index in List - O(n) linear time
     def pop(self, index):
-        pass
+        if self.head is None:
+            raise ValueError("Index out of bounds")
+        else:
+            last = self.head
+
+            for i in range(index-1):
+                if last.next is None:
+                    raise ValueError("Index out of bounds")
+                last = last.next
+
+            if last.next is None:
+                raise ValueError("Index out of bounds")
+            else:
+                last.next = last.next.next
+
 
     # Get value of specific index
     def get(self, value):
