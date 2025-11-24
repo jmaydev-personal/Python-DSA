@@ -20,9 +20,17 @@ class LinkedList:
     def __repr__(self):
         pass
 
-    """Checks if values exist in List"""
-    def __contains__(self):
-        pass
+    # Checks if values exist in List - return true/false
+    # O(n) linear time
+    def __contains__(self, value):
+        last = self.head
+        while last is not None:
+            # check value of node against parameter
+            if last.value == value:
+                return True
+            # iterate through each node
+            last = last.next
+        return False
 
     """Length of List"""
     def __len__(self):
