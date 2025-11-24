@@ -7,16 +7,21 @@ Operations: Traverse, display, search, calculate and get length, append, prepend
 
 class Node:
     def __init__(self, value):
-        """ Value of node """
+        # Value of node
         self.value = value 
-        """ Pointer to next node - empty be default as last node has nothing to point to"""
+        
+        # Pointer to next node - empty be default as last node has nothing to point to
         self.next = None
 
 class LinkedList:
     def __init__(self):
+        # initialise empty list
         self.head = None
 
-    """Representation of List - Display values in List"""
+        # helper variable to achieve O(1) constant time for finding length
+        self.size = 0
+
+    # Representation of List - Display values in List
     def __repr__(self):
         pass
 
@@ -32,21 +37,30 @@ class LinkedList:
             last = last.next
         return False
 
-    """Length of List"""
+    # Length of List - O(n) linear time
     def __len__(self):
-        pass
+        last = self.head
+        counter = 0
+        while last is not None:
+            counter += 1
+            last = last.next
+        return counter
 
     # Append - Add value to end of list - O(n) linear time
     def append(self, value):
         # if no head node, create it
         if self.head == None:
             self.head = Node(value)
+            # initialise list size
+            self.size = 1
         else:
             # traverse the list until you get to the last node
             last = self.head
             while last.next:
                 last = last.next
             last.next = Node(value)
+            # update list size every append
+            self.size += 1
 
     # Insert value at beginning of List - O(1) constant time
     def prepend(self, value):
@@ -85,15 +99,15 @@ class LinkedList:
                 last.next = new_node
 
 
-    """Delete value from end of List"""
+    # Delete value from end of List
     def delete(self, value):
         pass
 
-    """Delete value from specific index in List"""
+    # Delete value from specific index in List
     def pop(self, index):
         pass
 
-    """Get value of specific index"""
+    # Get value of specific index
     def get(self, value):
         pass
 
